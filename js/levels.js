@@ -2,8 +2,8 @@ var levels = [
   {
     helpTitle : "Selecione elementos pelo tipo do marcador",
     selectorName : "Seletor de marcador",
-    doThis : "Selecione os <plate>",
-    selector : "plate",
+    doThis : "Selecione os <prato>",
+    selector : "prato",
     syntax : "A",
     help : "Seleciona todos os elementos que tem o marcador <strong>A</strong>. Exemplos: <tag>div</tag>, <tag>p</tag> and <tag>ul</tag> são tipos de marcador.",
     examples : [
@@ -11,317 +11,285 @@ var levels = [
       '<strong>p</strong> seleciona todos os elementos <tag>p</tag>.',
     ],
     boardMarkup: `
-    <plate/>
-    <plate/>
-    <apple/>
-    <plate/>
+    <prato/>
+    <prato/>
+    <tomate/>
+    <prato/>
     `
   },
   {
-    helpTitle : "Selecione elementos pelo tipo do marcador",
-    selectorName : "Seletor de marcador",
-    doThis : "Selecione os <bento>",
-    selector : "bento",
-    syntax : "A",
-    help : "Seleciona todos os elementos que tem o marcador <strong>A</strong>. Exemplos: <tag>div</tag>, <tag>p</tag> and <tag>ul</tag> são tipos de marcador.",
-    examples : [
-      '<strong>div</strong> seleciona todos os elementos <tag>div</tag>.',
-      '<strong>p</strong> seleciona todos os elementos <tag>p</tag>.',
-    ],
-    boardMarkup: `
-    <bento/>
-    <plate/>
-    <bento/>
-    `
-  },
-  {
-    doThis : "Select the bento boxes",
-    selector : "bento",
-    syntax : "A",
-    helpTitle : "Select elements by their type",
-    selectorName : "Type Selector",
-    help : "Selects all elements of type <strong>A</strong>. Type refers to the type of tag, so <tag>div</tag>, <tag>p</tag> and <tag>ul</tag> are all different element types.",
-    examples : [
-      '<strong>div</strong> selects all <tag>div</tag> elements.',
-      '<strong>p</strong> selects all <tag>p</tag> elements.',
-    ],
-    boardMarkup: `
-    <bento/>
-    <plate/>
-    <plate/>
-    <plate/>
-    <bento/>
-    `
-  },
-  {
-    doThis : "Select the fancy plate",
-    selector : "#fancy",
-    selectorName: "ID Selector",
-    helpTitle: "Select elements with an ID",
+    doThis : "Selecione o prato chique (duas soluções!)",
+    selector : "#chique",
+    selectorName: "Seletor por ID",
+    helpTitle: "Seleciona elementos por id",
     syntax: "#id",
     help : 'Selects the element with a specific <strong>id</strong>. You can also combine the ID selector with the type selector.',
+    help : 'Seleciona o elemento com a  <strong>id</strong> dada. Podemos combinar o seletor por ID com um seletor por tipo',
     examples : [
-      '<strong>#cool</strong> selects any element with <strong>id="cool"</strong>',
-      '<strong>ul#long</strong> selects <tag>ul id="long"</tag>'
+      '<strong>#cool</strong> seleciona qualquer elemento com <strong>id="cool"</strong>',
+      '<strong>ul#long</strong> seleciona <tag>ul id="long"</tag>'
     ],
     boardMarkup : `
-    <plate id="fancy"/>
-    <plate/>
+    <prato id="chique"/>
+    <prato/>
     <bento/>
     `
   },
   {
-    helpTitle: "Select an element inside another element",
-    selectorName : "Descendant Selector",
-    doThis : "Select the apple on the plate",
-    selector : "plate apple",
+    helpTitle: "Selecione um elemento dentro de outro",
+    selectorName : "Seletor de descendente",
+    doThis : "Selecione o tomate dentro do prato",
+    selector : "prato tomate",
     syntax: "A&nbsp;&nbsp;B",
-    help : "Selects all <strong>B</strong> inside of <strong>A</strong>. <strong>B</strong> is called a descendant because it is inside of another element.",
+    help : "Seleciona todos os <strong>B</strong> que estejam dentro de um <strong>A</strong>. <strong>B</strong> é chamado de elemento descendente, por estar dentro de outro elemento",
     examples : [
-      '<strong>p&nbsp;&nbsp;strong</strong> selects all <tag>strong</tag> elements that are inside of any <tag>p</tag>',
-      '<strong>#fancy&nbsp;&nbsp;span</strong> selects any <tag>span</tag> elements that are inside of the element with <strong>id="fancy"</strong>',
+      '<strong>p&nbsp;&nbsp;strong</strong> seleciona todos os <tag>strong</tag> que estejam dentro de algum elemento p <tag>p</tag>',
+      '<strong>#chique&nbsp;&nbsp;span</strong> seleciona todos os <tag>span</tag> que estejam dentro de um elemento com <strong>id="chique"</strong>',
     ],
     boardMarkup : `
     <bento/>
-    <plate>
-      <apple/>
-    </plate>
-    <apple/>
+    <prato>
+      <tomate/>
+    </prato>
+    <tomate/>
     `
   },
   {
-    doThis : "Select the pickle on the fancy plate",
-    selector : "#fancy pickle",
-    helpTitle: "Combine the Descendant & ID Selectors",
+    doThis : "Selecione o picles dentro de um prato chique",
+    selector : "#chique picles",
+    helpTitle: "Combinar o por id e o por tipo, usando o descendente",
     syntax: "#id&nbsp;&nbsp;A",
-    help : 'You can combine any selector with the descendent selector.',
+    help : 'Você pode combinar quaisquer 2 seletores usando o descendente.',
     examples : [
-      '<strong>#cool&nbsp;span</strong> selects all <tag>span</tag> elements that are inside of elements with <strong>id="cool"</strong>'
+      '<strong>#cool&nbsp;span</strong> seleciona todos os marcadores <tag>span</tag>  que estejam dentro de elementos com o atributo id dado (<strong>id="cool"</strong>)'
     ],
     boardMarkup : `
     <bento>
-    <orange/>
+    <laranja/>
     </bento>
-    <plate id="fancy">
-      <pickle/>
-    </plate>
-    <plate>
-      <pickle/>
-    </plate>
+    <prato id="chique">
+      <picles/>
+    </prato>
+    <prato>
+      <picles/>
+    </prato>
     `
   },
   {
-    doThis : "Select the small apples",
+    doThis : "Selecione os tomates pequenos (classe small)",
     selector : ".small",
-    selectorName: "Class Selector",
-    helpTitle: "Select elements by their class",
-    syntax: ".classname",
-    help : 'The class selector selects all elements with that class attribute. Elements can only have one ID, but many classes.',
+    selectorName: "Seletor de classe",
+    helpTitle: "Seleciona elementos pelo atributo classe",
+    syntax: ".nomedaclasse",
+    help : 'O seletor de classe seleciona todos os elementos que tenham a classe escolhida',
     examples : [
-    '<strong>.neato</strong> selects all elements with <strong>class="neato"</strong>'
+    '<strong>.promocao</strong> seleciona todos os elementos com <strong>class="promocao"</strong>'
     ],
     boardMarkup : `
-    <apple/>
-    <apple class="small"/>
-    <plate>
-      <apple class="small"/>
-    </plate>
-    <plate/>
+    <tomate/>
+    <tomate class="small"/>
+    <prato>
+      <tomate class="small"/>
+    </prato>
+    <prato/>
     `
   },
   {
-    doThis : "Select the small oranges",
-    selector : "orange.small",
-    helpTitle: "Combine the Class Selector",
-    syntax: "A.className",
+    doThis : "Selecione as laranjas pequenas (classe small)",
+    selector : "laranja.small",
+    helpTitle: "Juntar seletor de classe e de tipo",
+    syntax: "A.nomeDaClasse",
     help : 'You can combine the class selector with other selectors, like the type selector.',
+    help : 'Você pode combinar o seletor de classe com outros seletores, como o de tipo',
     examples : [
-      '<strong>ul.important</strong> selects all <tag>ul</tag> elements that have <strong>class="important"</strong>',
-      '<strong>#big.wide</strong> selects all elements with <strong>id="big"</strong> that also have <strong>class="wide"</strong>'
+      '<strong>ul.importante</strong> seleciona todos os elementos <tag>ul</tag> que tenham <strong>class="importante"</strong>',
+      '<strong>#grande.largo</strong> seleciona todos os elementos que tenham <strong>id="grande"</strong> e também tenham <strong>class="largo"</strong>'
     ],
     boardMarkup :`
-    <apple/>
-    <apple class="small"/>
+    <tomate/>
+    <tomate class="small"/>
     <bento>
-      <orange class="small"/>
+      <laranja class="small"/>
     </bento>
-    <plate>
-      <orange/>
-    </plate>
-    <plate>
-      <orange class="small"/>
-    </plate>`
+    <prato>
+      <laranja/>
+    </prato>
+    <prato>
+      <laranja class="small"/>
+    </prato>`
   },
   {
-    doThis : "Select the small oranges in the bentos",
-    selector : "bento orange.small",
-    syntax: "Put your back into it!",
-    helpTitle: "You can do it...",
-    help : 'Combine what you learned in the last few levels to solve this one!',
+    doThis : "Selecione as laranjas pequenas dentro de bentos",
+    selector : "bento laranja.small",
+    syntax: "Estamos juntando as coisas de antes!",
+    helpTitle: "Mete bronca!",
+    help : 'Basta pensar no que você viu nos níveis anteriores.',
     boardMarkup : `
     <bento>
-      <orange/>
+      <laranja/>
     </bento>
-    <orange class="small"/>
+    <laranja class="small"/>
     <bento>
-      <orange class="small"/>
-    </bento>
-    <bento>
-      <apple class="small"/>
+      <laranja class="small"/>
     </bento>
     <bento>
-      <orange class="small"/>
+      <tomate class="small"/>
+    </bento>
+    <bento>
+      <laranja class="small"/>
     </bento>
     `
   },
   {
-    doThis : "Select all the plates and bentos",
-    selector : "plate,bento",
-    selectorName : "Comma Combinator",
-    helpTitle: "Combine, selectors, with... commas!",
+    doThis : "Selecione todos os pratos e todos os bentos",
+    selector : "prato,bento",
+    selectorName : "Virgula",
+    helpTitle: "Combine, seletores, com, virgula!",
     syntax : "A, B",
-    help : 'Thanks to Shatner technology, this selects all <strong>A</strong> and <strong>B</strong> elements. You can combine any selectors this way, and you can specify more than two.',
+    help : 'Seleciona todos os elementos do tipo <strong>A</strong>, e todos os elmentos do tipo <strong>B</strong>',
     examples: [
-    '<strong>p, .fun</strong> selects all <tag>p</tag> elements as well as all elements with <strong>class="fun"</strong>',
-    '<strong>a, p, div</strong> selects all <tag>a</tag>, <tag>p</tag> and <tag>div</tag> elements'
+    '<strong>p, .fun</strong> seleciona todos os elementos do tipo <tag>p</tag> e também todos os elementos com <strong>class="fun"</strong>',
+    '<strong>a, p, div</strong> seleciona todos os elementos dos três tipos: <tag>a</tag>, <tag>p</tag> e <tag>div</tag>'
     ],
     boardMarkup : `
-    <pickle class="small"/>
-    <pickle/>
-    <plate>
-      <pickle/>
-    </plate>
+    <picles class="small"/>
+    <picles/>
+    <prato>
+      <picles/>
+    </prato>
     <bento>
-      <pickle/>
+      <picles/>
     </bento>
-    <plate>
-      <pickle/>
-    </plate>
-    <pickle/>
-    <pickle class="small"/>
+    <prato>
+      <picles/>
+    </prato>
+    <picles/>
+    <picles class="small"/>
     `
   },
   {
-    doThis : "Select all the things!",
+    doThis : "Selecionar tudo!",
     selector : "*",
-    selectorName:  "The Universal Selector",
-    helpTitle: "You can select everything!",
+    selectorName:  "Seletor universal",
+    helpTitle: "Você pode selecionar tudo da página!",
     syntax : "*",
-    help : 'You can select all elements with the universal selector! ',
+    help : 'Para selecionar todos os elementos, é só usar *',
     examples : [
-      '<strong>p *</strong> selects any element inside all <tag>p</tag> elements.',
+      '<strong>p *</strong> seleciona qualquer elemento que esteja dentro de um elemento <tag>p</tag>.',
     ],
     boardMarkup : `
-    <apple/>
-    <plate>
-      <orange class="small" />
-    </plate>
+    <tomate/>
+    <prato>
+      <laranja class="small" />
+    </prato>
     <bento/>
     <bento>
-      <orange/>
+      <laranja/>
     </bento>
-    <plate id="fancy"/>
+    <prato id="chique"/>
     `
   },
   {
-    doThis : "Select everything on a plate",
-    selector : "plate *",
+    doThis : "Selecione tudo dentro de um prato",
+    selector : "prato *",
     syntax : "A&nbsp;&nbsp;*",
-    helpTitle: "Combine the Universal Selector",
-    help : 'This selects all elements inside of <strong>A</strong>.',
+    helpTitle: "Combine o seletor universal",
+    help : 'Seleciona tudo que estiver dentro de um <strong>A</strong>.',
     examples : [
-      '<strong>p *</strong> selects every element inside all <tag>p</tag> elements.',
-      '<strong>ul.fancy *</strong> selects every element inside all <tag>ul class="fancy"</tag> elements.'
+      '<strong>p *</strong> seleciona todos os elementos que estejam dentro de algum <tag>p</tag>.',
+      '<strong>ul.chique *</strong> seleciona todos os elementos que estejam dentro de algum <tag>ul class="chique"</tag> (i.e.: dentro de algum ul que tenha a classe chique)'
     ],
     boardMarkup: `
-    <plate id="fancy">
-      <orange class="small"/>
-    </plate>
-    <plate>
-      <pickle/>
-    </plate>
-    <apple class="small"/>
-    <plate>
-      <apple/>
-    </plate>`
+    <prato id="chique">
+      <laranja class="small"/>
+    </prato>
+    <prato>
+      <picles/>
+    </prato>
+    <tomate class="small"/>
+    <prato>
+      <tomate/>
+    </prato>`
   },
   {
-    doThis : "Select every apple that's next to a plate",
-    selector : "plate + apple",
-    helpTitle: "Select an element that directly follows another element",
-    selectorName: "Adjacent Sibling Selector",
+    doThis : "Selecione todos os tomates que venham logo após um prato",
+    selector : "prato + tomate",
+    helpTitle: "Selecione todos os elementos que venham depois de algo",
+    selectorName: "Seletor de irmão adjancente",
     syntax : "A + B",
-    help : "This selects all <strong>B</strong> elements that directly follow <strong>A</strong>. Elements that follow one another are called siblings. They're on the same level, or depth. <br/><br/>In the HTML markup for this level, elements that have the same indentation are siblings.",
+    help : "Seleciona todos os elementos <strong>B</strong> que vem logo depois de um  <strong>A</strong>. Elementos que estão dentro de um mesmo elemento pai são chamados irmmãos. Eles estão no mesmo nível, na mesma profundidade<br/><br/>Olhando o nosso código HTML, os elementos que tem a mesma identação estão no mesmo nível.",
     examples : [
-      '<strong>p + .intro</strong> selects every element with <strong>class="intro"</strong> that directly follows a <tag>p</tag>',
-      '<strong>div + a</strong> selects every <tag>a</tag> element that directly follows a <tag>div</tag>'
+      '<strong>p + .intro</strong> seleciona todo elemento com <strong>class="intro"</strong> que vem logo depois de um <tag>p</tag>',
+      '<strong>div + a</strong> seleciona todos os <tag>a</tag> que vem logo depois de algum <tag>div</tag>'
     ],
     boardMarkup : `
     <bento>
-      <apple class="small"/>
+      <tomate class="small"/>
     </bento>
-    <plate />
-    <apple class="small"/>
-    <plate />
-    <apple/>
-    <apple class="small"/>
-    <apple class="small"/>
+    <prato />
+    <tomate class="small"/>
+    <prato />
+    <tomate/>
+    <tomate class="small"/>
+    <tomate class="small"/>
     `
   },
   {
-    selectorName: "General Sibling Selector",
-    helpTitle: "Select elements that follows another element",
+    selectorName: "Seletor geral de irmão",
+    helpTitle: "Seleciona elementos que seguem algum elemento, no mesmo nível",
     syntax: "A ~ B",
-    doThis : "Select the pickles beside the bento",
-    selector : "bento ~ pickle",
+    doThis : "Selecione os picles que vem após o bento",
+    selector : "bento ~ picles",
     help : "You can select all siblings of an element that follow it. This is like the Adjacent Selector (A + B) except it gets all of the following elements instead of one.",
+    help : "Você pode selecionar todos os irmãos de um elemento que venham depois dele. Isso é parecido com o seletor de irmão adjacente, mas pega todos os elementos depois de A que estejam no mesmo nível e tenham o mesmo pai.",
     examples : [
-      '<strong>A ~ B</strong> selects all <strong>B</strong> that follow a <strong>A</strong>'
+      '<strong>A ~ B</strong> seleciona todos os <strong>B</strong> que vierem depois de um <strong>A</strong>'
     ],
     boardMarkup : `
-    <pickle/>
+    <picles/>
     <bento>
-      <orange class="small"/>
+      <laranja class="small"/>
     </bento>
-    <pickle class="small"/>
-    <pickle/>
-    <plate>
-      <pickle/>
-    </plate>
-    <plate>
-      <pickle class="small"/>
-    </plate>
+    <picles class="small"/>
+    <picles/>
+    <prato>
+      <picles/>
+    </prato>
+    <prato>
+      <picles class="small"/>
+    </prato>
     `
   },
+  /*
   {
     selectorName: "Child Selector",
     syntax: "A > B&nbsp;",
-    doThis : "Select the apple directly on a plate",
-    selector : "plate > apple",
+    doThis : "Select the tomate directly on a prato",
+    selector : "prato > tomate",
     helpTitle: "Select direct children of an element",
     help : "You can select elements that are direct children of other elements. A child element is any element that is nested directly in another element. <br><br>Elements that are nested deeper than that are called descendant elements.",
     examples : [
       '<strong>A > B</strong> selects all <strong>B</strong> that are a direct children <strong>A</strong>'
     ],
     boardMarkup: `
-    <plate>
+    <prato>
       <bento>
-        <apple/>
+        <tomate/>
       </bento>
-    </plate>
-    <plate>
-      <apple/>
-    </plate>
-    <plate/>
-    <apple/>
-    <apple class="small"/>
+    </prato>
+    <prato>
+      <tomate/>
+    </prato>
+    <prato/>
+    <tomate/>
+    <tomate class="small"/>
     `
   },
   {
     selectorName: "First Child Pseudo-selector",
     helpTitle: "Select a first child element inside of another element",
-    doThis : "Select the top orange",
-    selector : "plate :first-child",
+    doThis : "Select the top laranja",
+    selector : "prato :first-child",
     syntax: ":first-child",
 
     help : "You can select the first child element. A child element is any element that is directly nested in another element. You can combine this pseudo-selector with other selectors.",
@@ -332,20 +300,20 @@ var levels = [
     ],
     boardMarkup :`
     <bento/>
-    <plate />
-    <plate>
-      <orange />
-      <orange />
-      <orange />
-    </plate>
-    <pickle class="small" />
+    <prato />
+    <prato>
+      <laranja />
+      <laranja />
+      <laranja />
+    </prato>
+    <picles class="small" />
     `
   },
   {
     selectorName: "Only Child Pseudo-selector",
     helpTitle: "Select an element that are the only element inside of another one.",
-    doThis : "Select the apple and the pickle on the plates",
-    selector : "plate :only-child",
+    doThis : "Select the tomate and the picles on the pratos",
+    selector : "prato :only-child",
     syntax: ":only-child",
     help : "You can select any element that is the only element inside of another one.",
     examples : [
@@ -353,26 +321,26 @@ var levels = [
       '<strong>ul li:only-child</strong> selects the only <tag>li</tag> element that are in a <tag>ul</tag>.'
     ],
     boardMarkup : `
-    <plate>
-      <apple/>
-    </plate>
-    <plate>
-      <pickle />
-    </plate>
+    <prato>
+      <tomate/>
+    </prato>
+    <prato>
+      <picles />
+    </prato>
     <bento>
-      <pickle />
+      <picles />
     </bento>
-    <plate>
-      <orange class="small"/>
-      <orange/>
-    </plate>
-    <pickle class="small"/>
+    <prato>
+      <laranja class="small"/>
+      <laranja/>
+    </prato>
+    <picles class="small"/>
     `
   },
   {
     selectorName: "Last Child Pseudo-selector",
     helpTitle: "Select the last element inside of another element",
-    doThis : "Select the small apple and the pickle",
+    doThis : "Select the small tomate and the picles",
     selector : ".small:last-child",
     syntax: ":last-child",
     help : "You can use this selector to select an element that is the last child element inside of another element. <br><br>Pro Tip &rarr; In cases where there is only one element, that element counts as the first-child, only-child and last-child!",
@@ -382,20 +350,20 @@ var levels = [
       '<strong>ul li:last-child</strong> selects the last <tag>li</tag> elements inside of any <tag>ul</tag>.'
     ],
     boardMarkup : `
-    <plate id="fancy">
-      <apple class="small"/>
-    </plate>
-    <plate/>
-    <plate>
-      <orange class="small"/>
-      <orange>
-    </plate>
-    <pickle class="small"/>`
+    <prato id="chique">
+      <tomate class="small"/>
+    </prato>
+    <prato/>
+    <prato>
+      <laranja class="small"/>
+      <laranja>
+    </prato>
+    <picles class="small"/>`
   },
   {
     selectorName: "Nth Child Pseudo-selector",
     helpTitle: "Select an element by its order in another element",
-    doThis : "Select the 3rd plate",
+    doThis : "Select the 3rd prato",
     selector : ":nth-child(3)",
     syntax: ":nth-child(A)",
     help : "Selects the <strong>nth</strong> (Ex: 1st, 3rd, 12th etc.) child element in another element.",
@@ -404,10 +372,10 @@ var levels = [
       '<strong>div p:nth-child(2)</strong> selects the second <strong>p</strong> in every <strong>div</strong>',
     ],
     boardMarkup : `
-    <plate/>
-    <plate/>
-    <plate/>
-    <plate id="fancy"/>
+    <prato/>
+    <prato/>
+    <prato/>
+    <prato id="chique"/>
     `
   },
   {
@@ -421,42 +389,42 @@ var levels = [
       '<strong>:nth-last-child(2)</strong> selects all second-to-last child elements.'
     ],
     boardMarkup: `
-    <plate/>
+    <prato/>
     <bento/>
-    <plate>
-      <orange/>
-      <orange/>
-      <orange/>
-    </plate>
+    <prato>
+      <laranja/>
+      <laranja/>
+      <laranja/>
+    </prato>
     <bento/>
     `
   },
   {
     selectorName: "First of Type Selector",
     helpTitle: "Select the first element of a specific type",
-    doThis : "Select first apple",
-    selector : "apple:first-of-type",
+    doThis : "Select first tomate",
+    selector : "tomate:first-of-type",
     syntax: ":first-of-type",
     help : "Selects the first element of that type within another element.",
     examples : [
       '<strong>span:first-of-type</strong> selects the first <tag>span</tag> in any element.'
     ],
     boardMarkup: `
-    <orange class="small"/>
-    <apple/>
-    <apple class="small"/>
-    <apple/>
-    <apple class="small"/>
-    <plate>
-      <orange class="small"/>
-      <orange/>
-    </plate>
+    <laranja class="small"/>
+    <tomate/>
+    <tomate class="small"/>
+    <tomate/>
+    <tomate class="small"/>
+    <prato>
+      <laranja class="small"/>
+      <laranja/>
+    </prato>
     `
   },
   {
     selectorName: "Nth of Type Selector",
-    doThis: "Select all even plates",
-    selector: "plate:nth-of-type(even)",
+    doThis: "Select all even pratos",
+    selector: "prato:nth-of-type(even)",
     syntax: ":nth-of-type(A)",
     help: "Selects a specific element based on its type and order in another element - or even or odd instances of that element.",
     examples: [
@@ -464,65 +432,65 @@ var levels = [
       '<strong>.example:nth-of-type(odd)</strong> selects all odd instances of a the example class.'
     ],
     boardMarkup : `
-    <plate/>
-    <plate/>
-    <plate/>
-    <plate/>
-    <plate id="fancy"/>
-    <plate/>
+    <prato/>
+    <prato/>
+    <prato/>
+    <prato/>
+    <prato id="chique"/>
+    <prato/>
     `
   },
   {
     selectorName: "Nth-of-type Selector with Formula",
-    doThis: "Select every 2nd plate, starting from the 3rd",
-    selector: "plate:nth-of-type(2n+3)",
+    doThis: "Select every 2nd prato, starting from the 3rd",
+    selector: "prato:nth-of-type(2n+3)",
     syntax: ":nth-of-type(An+B)",
     help: "The nth-of-type formula selects every nth element, starting the count at a specific instance of that element.",
     examples: [
       '<strong>span:nth-of-type(6n+2)</strong> selects every 6th instance of a <tag>span</tag>, starting from (and including) the second instance.'
     ],
     boardMarkup : `
-    <plate/>
-    <plate>
-      <pickle class="small" />
-    </plate>
-    <plate>
-      <apple class="small" />
-    </plate>
-    <plate/>
-    <plate>
-      <apple />
-    </plate>
-    <plate/>
+    <prato/>
+    <prato>
+      <picles class="small" />
+    </prato>
+    <prato>
+      <tomate class="small" />
+    </prato>
+    <prato/>
+    <prato>
+      <tomate />
+    </prato>
+    <prato/>
     `
   },
   {
     selectorName: "Only of Type Selector",
     helpTitle: "Select elements that are the only ones of their type within their parent element",
-    selector : "apple:only-of-type",
+    selector : "tomate:only-of-type",
     syntax: ":only-of-type",
-    doThis : "Select the apple on the middle plate",
+    doThis : "Select the tomate on the middle prato",
     help : "Selects the only element of its type within another element.",
     examples : [
       '<strong>p span:only-of-type</strong> selects a <tag>span</tag> within any <tag>p</tag> if it is the only <tag>span</tag> in there.'
     ],
     boardMarkup: `
-    <plate id="fancy">
-      <apple class="small" />
-      <apple />
-    </plate>
-    <plate>
-      <apple class="small" />
-    </plate>
-    <plate>
-      <pickle />
-    </plate>
+    <prato id="chique">
+      <tomate class="small" />
+      <tomate />
+    </prato>
+    <prato>
+      <tomate class="small" />
+    </prato>
+    <prato>
+      <picles />
+    </prato>
     `
   },
   {
     selectorName: "Last of Type Selector",
     helpTitle: "Select the last element of a specific type",
-    doThis : "Select the last apple and orange",
+    doThis : "Select the last tomate and laranja",
     selector : ".small:last-of-type",
     syntax: ":last-of-type",
     help : "Selects each last element of that type within another element. Remember type refers the kind of tag, so <tag>p</tag> and <tag>span</tag> are different types. <br><br> I wonder if this is how the last dinosaur was selected before it went extinct.",
@@ -531,12 +499,12 @@ var levels = [
       '<strong>p span:last-of-type</strong> selects the last <tag>span</tag> in every <tag>p</tag>.'
     ],
     boardMarkup : `
-    <orange class="small"/>
-    <orange class="small" />
-    <pickle />
-    <pickle />
-    <apple class="small" />
-    <apple class="small" />
+    <laranja class="small"/>
+    <laranja class="small" />
+    <picles />
+    <picles />
+    <tomate class="small" />
+    <tomate class="small" />
     `
   },
   {
@@ -552,35 +520,35 @@ var levels = [
     boardMarkup:`
     <bento/>
     <bento>
-      <pickle class="small"/>
+      <picles class="small"/>
     </bento>
-    <plate/>
+    <prato/>
     <bento/>`
   },
   {
     selectorName: "Negation Pseudo-class",
     helpTitle: "Select all elements that don't match the negation selector",
-    doThis : "Select the big apples",
-    selector : "apple:not(.small)",
+    doThis : "Select the big tomates",
+    selector : "tomate:not(.small)",
     syntax: ":not(X)",
     help : 'You can use this to select all elements that do not match selector <strong>"X"</strong>.',
     examples : [
-      '<strong>:not(#fancy)</strong> selects all elements that do not have <strong>id="fancy"</strong>.',
+      '<strong>:not(#chique)</strong> selects all elements that do not have <strong>id="chique"</strong>.',
       '<strong>div:not(:first-child)</strong> selects every <tag>div</tag> that is not a first child.',
       '<strong>:not(.big, .medium)</strong> selects all elements that do not have <strong>class="big"</strong> or <strong>class="medium"</strong>.'
     ],
     boardMarkup: `
-    <plate id="fancy">
-      <apple class="small" />
-    </plate>
-    <plate>
-      <apple />
-    </plate>
-    <apple />
-    <plate>
-      <orange class="small" />
-    </plate>
-    <pickle class="small" />
+    <prato id="chique">
+      <tomate class="small" />
+    </prato>
+    <prato>
+      <tomate />
+    </prato>
+    <tomate />
+    <prato>
+      <laranja class="small" />
+    </prato>
+    <picles class="small" />
     `
   },
   {
@@ -595,17 +563,17 @@ var levels = [
       '<strong>[type]</strong> selects all elements that have a <strong>type="anything"</strong>. attribute'
     ],
     boardMarkup:`
-    <bento><apple class="small"/></bento>
-    <apple for="Ethan"/>
-    <plate for="Alice"><pickle/></plate>
-    <bento for="Clara"><orange/></bento>
-    <pickle/>`
+    <bento><tomate class="small"/></bento>
+    <tomate for="Ethan"/>
+    <prato for="Alice"><picles/></prato>
+    <bento for="Clara"><laranja/></bento>
+    <picles/>`
   },
   {
     selectorName: "Attribute Selector",
     helpTitle: "Select all elements that have a specific attribute",
-    doThis : "Select the plates for someone",
-    selector : "plate[for]",
+    doThis : "Select the pratos for someone",
+    selector : "prato[for]",
     syntax: "A[attribute]",
     help : "Combine the attribute selector with another selector (like the tag name selector) by adding it to the end.",
     examples : [
@@ -614,10 +582,10 @@ var levels = [
       '<strong>input[disabled]</strong> selects all <tag>input</tag> elements with the <strong>disabled</strong> attribute'
     ],
     boardMarkup:`
-    <plate for="Sarah"><pickle/></plate>
-    <plate for="Luke"><apple/></plate>
-    <plate/>
-    <bento for="Steve"><orange/></bento>
+    <prato for="Sarah"><picles/></prato>
+    <prato for="Luke"><tomate/></prato>
+    <prato/>
+    <bento for="Steve"><laranja/></bento>
     `
   },
   {
@@ -631,10 +599,10 @@ var levels = [
       '<strong>input[type="checkbox"]</strong> selects all checkbox input elements.'
     ],
     boardMarkup:`
-    <apple for="Alexei" />
-    <bento for="Albina"><apple /></bento>
-    <bento for="Vitaly"><orange/></bento>
-    <pickle/>
+    <tomate for="Alexei" />
+    <bento for="Albina"><tomate /></bento>
+    <bento for="Vitaly"><laranja/></bento>
+    <picles/>
     `
   },
   {
@@ -648,9 +616,9 @@ var levels = [
       '<strong>.toy[category^="Swim"]</strong> selects elements with class <strong>toy</strong> and either <strong>category="Swimwear"</strong> or <strong>category="Swimming"</strong>.'
     ],
     boardMarkup: `
-    <plate for="Sam"><pickle/></plate>
-    <bento for="Sarah"><apple class="small"/></bento>
-    <bento for="Mary"><orange/></bento>
+    <prato for="Sam"><picles/></prato>
+    <bento for="Sarah"><tomate class="small"/></bento>
+    <bento for="Mary"><laranja/></bento>
     `
   },
   {
@@ -664,11 +632,11 @@ var levels = [
       '<strong>img[src$=".jpg"]</strong> selects all images display a <strong>.jpg</strong> image.',
     ],
     boardMarkup:`
-    <apple class="small"/>
-    <bento for="Hayato"><pickle/></bento>
-    <apple for="Ryota"></apple>
-    <plate for="Minato"><orange/></plate>
-    <pickle class="small"/>
+    <tomate class="small"/>
+    <bento for="Hayato"><picles/></bento>
+    <tomate for="Ryota"></tomate>
+    <prato for="Minato"><laranja/></prato>
+    <picles class="small"/>
     `
   },
   {
@@ -683,9 +651,9 @@ var levels = [
       '<strong>[class*="heading"]</strong> selects all elements with "heading" in their class, like <strong>class="main-heading"</strong> and <strong>class="sub-heading"</strong>'
     ],
     boardMarkup:`
-    <bento for="Robbie"><apple /></bento>
-    <bento for="Timmy"><pickle /></bento>
-    <bento for="Bobby"><orange /></bento>
+    <bento for="Robbie"><tomate /></bento>
+    <bento for="Timmy"><picles /></bento>
+    <bento for="Bobby"><laranja /></bento>
     `
-  }
+  }*/
 ];
